@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Divya Andem</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      background: #fff;
+      color: #1a1a1a;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { opacity: 0.6; }
+
+    /* ── NAV ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 52px;
+    }
+
+    .site-name {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: #1a1a1a;
+    }
+
+    nav { display: flex; gap: 1.8rem; align-items: center; }
+    nav a {
+      font-size: .8rem;
+      font-weight: 400;
+      text-decoration: none;
+      color: #555;
+      letter-spacing: .02em;
+    }
+    nav a:hover { color: #1a1a1a; opacity: 1; }
+
+    /* ── PAGE LAYOUT ── */
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── ON THIS PAGE sidebar TOC (hidden on small) ── */
+    .toc {
+      position: fixed;
+      left: calc(50% + 400px);
+      top: 100px;
+      width: 160px;
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .toc-label {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #999;
+      margin-bottom: .3rem;
+    }
+    .toc a {
+      font-size: .78rem;
+      color: #888;
+      text-decoration: none;
+      line-height: 1.4;
+      transition: color .15s;
+    }
+    .toc a:hover, .toc a.active { color: #1a1a1a; }
+    @media (max-width: 1100px) { .toc { display: none; } }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      gap: 2.5rem;
+      align-items: start;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .hero-avatar {
+      width: 155px; height: 155px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #f0ede8;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 2.4rem;
+      color: #888;
+      flex-shrink: 0;
+      border: 1px solid #e8e8e8;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: .5rem;
+    }
+
+    .hero-tagline {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 1rem;
+      font-family: 'Lora', serif;
+      font-size: .95rem;
+    }
+
+    .hero-desc {
+      color: #333;
+      margin-bottom: 1.2rem;
+      font-size: .93rem;
+    }
+    .hero-desc strong { font-weight: 500; color: #1a1a1a; }
+
+    .hero-chips {
+      font-size: .82rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.9;
+    }
+    .hero-chips span { margin-right: .2rem; }
+    .hero-chips span::after { content: ' |'; color: #ccc; margin-left: .2rem; }
+    .hero-chips span:last-child::after { content: ''; }
+
+    .hero-btns { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .hero-btn {
+      font-size: .8rem;
+      font-weight: 500;
+      padding: .45rem 1.1rem;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background .15s, color .15s;
+      letter-spacing: .02em;
+    }
+    .hero-btn-primary { background: #1a1a1a; color: #fff; }
+    .hero-btn-primary:hover { background: #333; opacity: 1; }
+    .hero-btn-outline { border: 1px solid #ccc; color: #333; }
+    .hero-btn-outline:hover { border-color: #999; opacity: 1; }
+
+    /* quick-info grid */
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2rem;
+    }
+
+    .quick-section h4 {
+      font-size: .68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #999;
+      margin-bottom: .55rem;
+    }
+    .quick-section ul { list-style: none; }
+    .quick-section ul li {
+      font-size: .83rem;
+      color: #444;
+      padding: .2rem 0;
+      border-bottom: 1px solid #f2f2f2;
+      line-height: 1.5;
+    }
+    .quick-section ul li:last-child { border-bottom: none; }
+
+    /* ── SECTIONS ── */
+    section { margin-bottom: 3.5rem; }
+
+    section h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      padding-bottom: .6rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    /* ── SKILLS ── */
+    .skills-group { margin-bottom: 1.4rem; }
+    .skills-group h3 {
+      font-size: .7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #999;
+      margin-bottom: .6rem;
+    }
+    .skills-list {
+      font-size: .85rem;
+      color: #444;
+      line-height: 1.8;
+    }
+    .skills-list span {
+      display: inline-block;
+      margin-right: .3rem;
+      margin-bottom: .3rem;
+    }
+    .skills-list span::after { content: '·'; color: #ccc; margin-left: .3rem; }
+    .skills-list span:last-child::after { content: ''; }
+
+    /* ── EXPERIENCE / TIMELINE ── */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 1.8rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid #f2f2f2;
+    }
+    .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .exp-period {
+      font-size: .75rem;
+      color: #999;
+      padding-top: .1rem;
+      line-height: 1.5;
+    }
+
+    .exp-role {
+      font-size: .95rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: .15rem;
+    }
+    .exp-company {
+      font-size: .82rem;
+      color: #777;
+      margin-bottom: .7rem;
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: .84rem;
+      color: #444;
+      line-height: 1.7;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: .3rem;
+    }
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: #bbb;
+      font-size: .7rem;
+      top: .2rem;
+    }
+
+    /* ── PROJECTS ── */
+    .proj-item {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #f2f2f2;
+    }
+    .proj-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .proj-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1rem; margin-bottom: .3rem; flex-wrap: wrap;
+    }
+    .proj-name {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .proj-date { font-size: .75rem; color: #999; }
+
+    .proj-tags-row { margin-bottom: .7rem; }
+    .proj-tag {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #777;
+      background: #f5f5f5;
+      border-radius: 2px;
+      padding: .1rem .45rem;
+      margin-right: .3rem;
+    }
+
+    .proj-bullets { list-style: none; }
+    .proj-bullets li {
+      font-size: .84rem;
+      color: #444;
+      line-height: 1.7;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: .3rem;
+    }
+    .proj-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: #bbb;
+      font-size: .7rem;
+      top: .2rem;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 1.8rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid #f2f2f2;
+    }
+    .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .edu-year { font-size: .75rem; color: #999; padding-top: .1rem; }
+    .edu-deg { font-size: .95rem; font-weight: 500; margin-bottom: .15rem; }
+    .edu-school { font-size: .82rem; color: #777; margin-bottom: .5rem; }
+    .edu-detail { font-size: .8rem; color: #888; line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .contact-block h3 {
+      font-size: .7rem; font-weight: 500; text-transform: uppercase;
+      letter-spacing: .12em; color: #999; margin-bottom: .8rem;
+    }
+    .contact-links { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .contact-links a {
+      font-size: .85rem; color: #444;
+      text-decoration: none; display: flex; align-items: center; gap: .5rem;
+    }
+    .contact-links a:hover { color: #1a1a1a; opacity: 1; }
+    .contact-links .ci { font-size: .9rem; width: 18px; }
+
+    /* simple form */
+    .contact-form { display: flex; flex-direction: column; gap: .7rem; }
+    .cf-row input, .cf-row textarea {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: .6rem .8rem;
+      font-family: 'Inter', sans-serif;
+      font-size: .82rem;
+      color: #1a1a1a;
+      background: #fafafa;
+      outline: none;
+      transition: border-color .15s;
+      resize: vertical;
+    }
+    .cf-row input:focus, .cf-row textarea:focus { border-color: #888; background: #fff; }
+    .cf-row input::placeholder, .cf-row textarea::placeholder { color: #bbb; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e8e8e8;
+      padding: 1.8rem 2rem;
+      text-align: center;
+      font-size: .75rem;
+      color: #aaa;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-avatar { width: 100px; height: 100px; font-size: 1.8rem; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .exp-item, .edu-item { grid-template-columns: 1fr; gap: .2rem; }
+      .exp-period, .edu-year { font-size: .7rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      header { padding: 0 1.2rem; }
+      main { padding: 2.5rem 1.2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<header>
+  <a class="site-name" href="#">Divya Andem</a>
+  <nav>
+    <a href="https://github.com/andem-divya" target="_blank">GitHub</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="mailto:divya.andem.1@gmail.com">Contact</a>
+  </nav>
+</header>
+
+<!-- SIDEBAR TOC -->
+<aside class="toc" id="toc">
+  <div class="toc-label">On this page</div>
+  <a href="#hello">Hello, I'm Divya!</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</aside>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <div class="hero" id="hello">
+    <div>
+      <h1>Hello, I'm Divya!</h1>
+      <p class="hero-tagline">Building intelligent systems where engineering meets data.</p>
+      <p class="hero-desc">
+        I'm a <strong>Software Engineer</strong> with 6 years of experience building backend systems, data pipelines, and cloud-native applications. Pursuing a <strong>Master's in Applied Data Science</strong> at the University of Michigan (May 2026), with a focus on machine learning, deep learning (PyTorch), and generative AI.
+      </p>
+      <p class="hero-chips">
+        <span>Deploying ML models</span>
+        <span>Building scalable cloud systems</span>
+        <span>Designing intelligent data pipelines</span>
+        <span>Generative AI & RAG</span>
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="hero-btn hero-btn-primary">Explore My Work</a>
+        <a href="mailto:divya.andem.1@gmail.com" class="hero-btn hero-btn-outline">Get in Touch</a>
+      </div>
+
+      <br/>
+      <div class="quick-grid">
+        <div class="quick-section">
+          <h4>Work Experience</h4>
+          <ul>
+            <li>Software Engineer Specialist · Accenture</li>
+            <li>Software Engineer II · MatrixIntelligence</li>
+            <li>Software Engineer I · Smartron India</li>
+          </ul>
+        </div>
+        <div class="quick-section">
+          <h4>Education</h4>
+          <ul>
+            <li>Master of Applied Data Science · U of Michigan</li>
+            <li>B.Tech Electrical Engineering · IIT Hyderabad</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- AVATAR -->
+    <div class="hero-avatar">DA</div>
+  </div>
+
+  <!-- ── WHAT I BRING ── -->
+  <section id="skills">
+    <h2>What I Bring to the Table</h2>
+
+    <div style="margin-bottom:2rem;">
+      <h3 style="font-family:'Lora',serif;font-size:.95rem;font-weight:500;margin-bottom:.3rem;">Engineering Depth with ML Breadth</h3>
+      <p style="font-size:.84rem;color:#666;font-style:italic;margin-bottom:.8rem;">6 years of software engineering combined with formal graduate-level ML training.</p>
+      <p style="font-size:.84rem;color:#444;margin-bottom:.7rem;line-height:1.75;">I combine a strong backend engineering foundation — serverless APIs, data pipelines, AWS cloud architecture — with hands-on ML expertise spanning supervised learning, deep learning, NLP, and generative AI. I build things that work in production, not just in notebooks.</p>
+      <div class="skills-group">
+        <h3>AI & Machine Learning</h3>
+        <div class="skills-list">
+          <span>Scikit-Learn</span><span>PyTorch</span><span>NLP</span><span>Regression</span>
+          <span>Classification</span><span>Feature Engineering</span><span>LLMs</span>
+          <span>RAG</span><span>VectorDB</span><span>LangChain</span>
+          <span>XGBoost</span><span>Random Forest</span><span>GridSearchCV</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <h3>Programming & Data</h3>
+        <div class="skills-list">
+          <span>Python</span><span>SQL</span><span>Pandas</span><span>NumPy</span>
+          <span>PySpark</span><span>Flask</span><span>FastAPI</span><span>SQLAlchemy</span>
+          <span>RESTful APIs</span><span>BeautifulSoup</span><span>Matplotlib</span>
+          <span>Seaborn</span><span>HTML/CSS/JS</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <h3>Cloud & DevOps</h3>
+        <div class="skills-list">
+          <span>AWS Lambda</span><span>S3</span><span>RDS</span><span>SQS</span>
+          <span>API Gateway</span><span>Secrets Manager</span><span>Serverless</span>
+          <span>Microservices</span><span>Docker</span><span>CI/CD</span>
+          <span>Git</span><span>Pytest</span><span>Power BI</span><span>Agile/Scrum</span>
+        </div>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #f0f0f0;margin-bottom:2rem;"/>
+
+    <div style="margin-bottom:2rem;">
+      <h3 style="font-family:'Lora',serif;font-size:.95rem;font-weight:500;margin-bottom:.3rem;">Operational Problem-Solving with Business Impact</h3>
+      <p style="font-size:.84rem;color:#666;font-style:italic;margin-bottom:.8rem;">I thrive at identifying bottlenecks and converting manual processes into automated systems.</p>
+      <p style="font-size:.84rem;color:#444;line-height:1.75;"><strong style="font-weight:500;">Delivered Impact</strong><br/>
+      Replaced a manual Excel workflow processing 4M+ rows with an automated Python pipeline — cutting runtime from half a day to under 10 minutes. Saved 20+ engineering hours/month through automated data quality pipelines at Accenture.</p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #f0f0f0;margin-bottom:2rem;"/>
+
+    <div>
+      <h3 style="font-family:'Lora',serif;font-size:.95rem;font-weight:500;margin-bottom:.3rem;">Reliable, Production-Ready Execution</h3>
+      <p style="font-size:.84rem;color:#666;font-style:italic;margin-bottom:.8rem;">I build reproducible, maintainable, and cloud-deployable systems.</p>
+      <p style="font-size:.84rem;color:#444;line-height:1.75;"><strong style="font-weight:500;">Delivered Impact</strong><br/>
+      Deployed serverless REST APIs on AWS Lambda + API Gateway serving insurance workflows at enterprise scale. Built geospatial ML pipelines with full hyperparameter tuning and ablation analysis for robust production-ready models.</p>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience">
+    <h2>Work Experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-period">Feb 2021<br/>Aug 2023</div>
+      <div>
+        <div class="exp-role">Software Product & Platform Eng Specialist</div>
+        <div class="exp-company">Accenture · Hyderabad, India</div>
+        <ul class="exp-bullets">
+          <li>Automated data cleaning and transformation pipelines in Python, delivering quality-assured datasets to AWS S3 for downstream ML pipelines and analytics — saving 20+ hours/month.</li>
+          <li>Developed serverless REST APIs with Flask on AWS Lambda and API Gateway, exposing golden records for insurance workflows including products, policies, and customer data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Sep 2019<br/>Feb 2021</div>
+      <div>
+        <div class="exp-role">Software Engineer II</div>
+        <div class="exp-company">MatrixIntelligence India LLP · Hyderabad, India</div>
+        <ul class="exp-bullets">
+          <li>Built an end-to-end price prediction POC by automating data collection (BeautifulSoup) and training ML models, enabling data-driven pricing decisions.</li>
+          <li>Resolved a critical bottleneck — converted a manual Excel process to an automated Python pipeline handling 4M+ rows, reducing runtime from half a day to under 10 minutes.</li>
+          <li>Developed Python/Pandas workflows to calculate and automate business KPI metrics, delivering results directly to Power BI dashboards.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Jun 2017<br/>Sep 2019</div>
+      <div>
+        <div class="exp-role">Software Engineer I</div>
+        <div class="exp-company">Smartron India Pvt Ltd · Hyderabad, India</div>
+        <ul class="exp-bullets">
+          <li>Developed a Python-based Smart Home Assistant module using Flask and WebSockets for real-time communication between IoT devices and cloud services.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <div class="proj-name">Airbnb Popularity Prediction</div>
+        <div class="proj-date">Jan 2026 – Present</div>
+      </div>
+      <div class="proj-tags-row">
+        <span class="proj-tag">ML</span>
+        <span class="proj-tag">Geospatial</span>
+        <span class="proj-tag">XGBoost</span>
+        <span class="proj-tag">Python</span>
+      </div>
+      <ul class="proj-bullets">
+        <li>Engineered a geospatial ML pipeline integrating Airbnb listings with external crime, walkability, and demographic datasets via spatial joins, building location-aware feature sets.</li>
+        <li>Built and compared supervised ML models (Linear Regression, KNN, Random Forest, XGBoost) and unsupervised clustering using cross-validation across multiple urban centers.</li>
+        <li>Conducted hyperparameter tuning (GridSearchCV), ablation analysis, sensitivity analysis, and feature importance evaluation to optimize bias-variance tradeoff and improve generalization.</li>
+      </ul>
+      <p style="margin-top:.8rem;font-size:.8rem;"><a href="https://github.com/andem-divya" target="_blank">View on GitHub →</a></p>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <div class="proj-name">Serverless Insurance API Platform</div>
+        <div class="proj-date">2021 – 2023</div>
+      </div>
+      <div class="proj-tags-row">
+        <span class="proj-tag">Flask</span>
+        <span class="proj-tag">AWS Lambda</span>
+        <span class="proj-tag">API Gateway</span>
+        <span class="proj-tag">S3</span>
+      </div>
+      <ul class="proj-bullets">
+        <li>Designed and deployed serverless REST APIs using Flask on AWS Lambda and API Gateway to expose insurance golden records at scale.</li>
+        <li>Integrated automated Python data quality pipelines feeding clean, validated datasets to AWS S3 for downstream ML pipelines and analytics.</li>
+      </ul>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <div class="proj-name">Price Prediction & KPI Automation</div>
+        <div class="proj-date">2019 – 2021</div>
+      </div>
+      <div class="proj-tags-row">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">BeautifulSoup</span>
+        <span class="proj-tag">Pandas</span>
+        <span class="proj-tag">Power BI</span>
+      </div>
+      <ul class="proj-bullets">
+        <li>Built end-to-end price prediction POC with automated web scraping and ML model training to enable data-driven pricing decisions.</li>
+        <li>Replaced a manual Excel workflow with an automated Python pipeline handling 4M+ rows — from 4+ hours down to under 10 minutes.</li>
+        <li>Automated KPI metric computation with results piped directly into Power BI dashboards, eliminating manual Excel-based reporting.</li>
+      </ul>
+    </div>
+
+    <div class="proj-item">
+      <div class="proj-header">
+        <div class="proj-name">Smart Home Assistant Module</div>
+        <div class="proj-date">2017 – 2019</div>
+      </div>
+      <div class="proj-tags-row">
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag">Flask</span>
+        <span class="proj-tag">WebSockets</span>
+        <span class="proj-tag">IoT</span>
+      </div>
+      <ul class="proj-bullets">
+        <li>Built a Python-based Smart Home Assistant using Flask and WebSockets for real-time bi-directional communication between IoT devices and cloud services.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-item">
+      <div class="edu-year">May 2026</div>
+      <div>
+        <div class="edu-deg">Master of Applied Data Science (MADS)</div>
+        <div class="edu-school">University of Michigan School of Information · Ann Arbor, MI</div>
+        <div class="edu-detail">AI Concentration · Coursework: Machine Learning, Deep Learning (PyTorch), NLP, Generative AI (LLMs/RAG), Data Mining</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">May 2017</div>
+      <div>
+        <div class="edu-deg">Bachelor of Technology, Electrical Engineering</div>
+        <div class="edu-school">Indian Institute of Technology (IIT) · Hyderabad, India</div>
+        <div class="edu-detail">Strong foundations in systems engineering, signal processing, and applied mathematics.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Get in Touch</h3>
+        <p style="font-size:.84rem;color:#555;margin-bottom:1.2rem;line-height:1.7;">I'm open to new opportunities in software engineering, ML engineering, and data science. Feel free to reach out!</p>
+        <ul class="contact-links">
+          <li><a href="mailto:divya.andem.1@gmail.com"><span class="ci">✉</span> divya.andem.1@gmail.com</a></li>
+          <li><a href="tel:5104587410"><span class="ci">☎</span> 510-458-7410</a></li>
+          <li><a href="https://github.com/andem-divya" target="_blank"><span class="ci">⌨</span> github.com/andem-divya</a></li>
+          <li><a href="https://linkedin.com" target="_blank"><span class="ci">◈</span> LinkedIn</a></li>
+          <li><a href="#"><span class="ci">◎</span> Fremont, CA</a></li>
+        </ul>
+      </div>
+      <div class="contact-block">
+        <h3>Send a Message</h3>
+        <div class="contact-form">
+          <div class="cf-row"><input type="text" placeholder="Your name"/></div>
+          <div class="cf-row"><input type="email" placeholder="Your email"/></div>
+          <div class="cf-row"><textarea rows="4" placeholder="Your message…"></textarea></div>
+          <div class="cf-row">
+            <a href="mailto:divya.andem.1@gmail.com" class="hero-btn hero-btn-primary" style="display:inline-block;font-size:.8rem;">Send →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Divya Andem · Fremont, CA · <a href="mailto:divya.andem.1@gmail.com" style="color:#aaa">divya.andem.1@gmail.com</a>
+</footer>
+
+<script>
+  // Highlight active TOC item on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const tocLinks = document.querySelectorAll('.toc a');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector(`.toc a[href="#${e.target.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
