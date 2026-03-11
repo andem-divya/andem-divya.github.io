@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Divya Andem — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #1a2e44;
+      --navy-light: #243b55;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --cream-dark: #ede6d6;
+      --text-dark: #1a1a2e;
+      --text-muted: #6b7a8d;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13, 27, 42, 0.96);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e3a5f 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 100px 5% 60px;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      max-width: 1100px;
+      width: 100%;
+      align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
+    }
+
+    .stat-box { text-align: left; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(201,168,76,0.5);
+      color: var(--gold-light);
+      padding: 0.75rem 1.8rem;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Avatar card */
+    .avatar-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    #gh-avatar {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      background: var(--navy-light);
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    .avatar-name {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .avatar-handle {
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+    }
+    .avatar-bio {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.82rem;
+      margin-top: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .avatar-meta {
+      display: flex; justify-content: center; gap: 1.5rem;
+      margin-top: 1.2rem; flex-wrap: wrap;
+    }
+    .avatar-meta span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .avatar-meta svg { width: 13px; height: 13px; fill: var(--gold); }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 5%; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    /* divider line */
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--navy-light), transparent);
+      opacity: 0.2;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      color: #3a4558;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-details { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .detail-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--white);
+      border-radius: 10px;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .detail-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(201,168,76,0.12);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .detail-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .detail-value { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-top: 0.15rem; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--cream-dark); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.8rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+    }
+
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+    .project-lang {
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 600; margin-bottom: 0.8rem;
+    }
+
+    .project-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.4rem;
+    }
+
+    .project-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .project-stars {
+      display: flex; align-items: center; gap: 0.3rem;
+      font-size: 0.82rem; color: var(--text-muted);
+    }
+
+    .project-link {
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--gold); text-decoration: none;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--navy); }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--cream); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .skill-category {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.6rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+
+    .skill-cat-title {
+      font-size: 0.75rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 600; margin-bottom: 1rem;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .skill-tag {
+      background: rgba(13,27,42,0.06);
+      color: var(--navy);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+    }
+
+    #contact .section-title { color: var(--white); }
+    #contact .section-eyebrow { color: var(--gold); }
+    #contact .section-line { background: linear-gradient(to right, rgba(201,168,76,0.4), transparent); opacity: 1; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-text {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-link-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-link-row:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
+    .contact-link-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(201,168,76,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    .contact-link-text { color: rgba(255,255,255,0.8); font-size: 0.92rem; }
+    .contact-link-sub { color: var(--gold); font-size: 0.78rem; margin-top: 0.1rem; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.78rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+
+    .form-group input, .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+      padding: 2rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.82rem;
+    }
+    footer span { color: var(--gold); }
+
+    /* ── LOADING ── */
+    .loading-shimmer {
+      background: linear-gradient(90deg, #e8e0d0 25%, #f5ede0 50%, #e8e0d0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 6px;
+      height: 1em;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .avatar-card { max-width: 300px; margin: 0 auto; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Divya Andem</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div class="hero-content fade-in">
+      <p class="hero-eyebrow">Software Developer &amp; Engineer</p>
+      <h1 class="hero-name">Divya<br>Andem</h1>
+      <p class="hero-tagline" id="hero-bio">Passionate developer crafting elegant solutions. Building impactful projects on GitHub and beyond.</p>
+
+      <div class="hero-stats">
+        <div class="stat-box">
+          <span class="stat-num" id="stat-repos">—</span>
+          <span class="stat-label">Repositories</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num" id="stat-followers">—</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num" id="stat-following">—</span>
+          <span class="stat-label">Following</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="https://github.com/andem-divya" target="_blank" class="btn-outline">GitHub Profile</a>
+      </div>
+    </div>
+
+    <div class="avatar-card fade-in" style="animation-delay:0.2s">
+      <img id="gh-avatar" src="" alt="Divya Andem avatar"/>
+      <div class="avatar-name" id="gh-name">Divya Andem</div>
+      <div class="avatar-handle">@andem-divya</div>
+      <div class="avatar-bio" id="gh-bio">Loading profile…</div>
+      <div class="avatar-meta" id="gh-meta"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">01</span>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p id="about-para-1">I'm a dedicated software developer with a passion for building clean, efficient, and impactful applications. I love turning complex problems into simple, elegant solutions.</p>
+        <p>With a strong foundation in modern development practices, I enjoy collaborating on open-source projects and continuously learning new technologies to stay at the forefront of the industry.</p>
+        <p>Whether it's a web app, a utility tool, or a data project — I bring curiosity, precision, and craftsmanship to every line of code.</p>
+      </div>
+      <div class="about-details">
+        <div class="detail-row">
+          <div class="detail-icon">👤</div>
+          <div>
+            <div class="detail-label">Full Name</div>
+            <div class="detail-value" id="detail-name">Divya Andem</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">📍</div>
+          <div>
+            <div class="detail-label">Location</div>
+            <div class="detail-value" id="detail-location">—</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">🏢</div>
+          <div>
+            <div class="detail-label">Organization</div>
+            <div class="detail-value" id="detail-company">—</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">🔗</div>
+          <div>
+            <div class="detail-label">GitHub</div>
+            <div class="detail-value"><a href="https://github.com/andem-divya" style="color:var(--gold);text-decoration:none;">github.com/andem-divya</a></div>
+          </div>
+        </div>
+        <div class="detail-row" id="blog-row" style="display:none">
+          <div class="detail-icon">🌐</div>
+          <div>
+            <div class="detail-label">Website</div>
+            <div class="detail-value" id="detail-blog">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">02</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid" id="projects-grid">
+      <!-- cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">03</span>
+      <h2 class="section-title">Skills &amp; Technologies</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid" id="skills-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">04</span>
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-text">I'm open to new opportunities, collaborations, and interesting conversations. Whether you have a project in mind or just want to connect — reach out!</p>
+        <div class="contact-links">
+          <a href="https://github.com/andem-divya" target="_blank" class="contact-link-row">
+            <div class="contact-link-icon">🐙</div>
+            <div>
+              <div class="contact-link-text">GitHub</div>
+              <div class="contact-link-sub">github.com/andem-divya</div>
+            </div>
+          </a>
+          <a href="mailto:" class="contact-link-row" id="email-link">
+            <div class="contact-link-icon">✉️</div>
+            <div>
+              <div class="contact-link-text">Email</div>
+              <div class="contact-link-sub" id="email-display">Available on request</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="contact-link-row">
+            <div class="contact-link-icon">💼</div>
+            <div>
+              <div class="contact-link-text">LinkedIn</div>
+              <div class="contact-link-sub">Connect professionally</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Jane Doe"/>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jane@example.com"/>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell me about your project or opportunity…"></textarea>
+          </div>
+          <a href="mailto:andem-divya@github.com" class="btn-primary" style="text-align:center;">Send Message →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Crafted with care · <span>Divya Andem</span> · © 2026 · <a href="https://github.com/andem-divya" style="color:var(--gold);text-decoration:none;">@andem-divya</a></p>
+</footer>
+
+<script>
+const USERNAME = 'andem-divya';
+const GH = `https://api.github.com`;
+
+async function ghFetch(path) {
+  const res = await fetch(`${GH}${path}`);
+  if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+  return res.json();
+}
+
+// ---- LANGUAGE COLOURS ----
+const langColors = {
+  JavaScript: '#f1e05a', TypeScript: '#3178c6', Python: '#3572A5',
+  Java: '#b07219', HTML: '#e34c26', CSS: '#563d7c', Ruby: '#701516',
+  Go: '#00ADD8', Rust: '#dea584', C: '#555555', 'C++': '#f34b7d',
+  Shell: '#89e051', Kotlin: '#A97BFF', Swift: '#F05138',
+  PHP: '#4F5D95', Dart: '#00B4AB', Vue: '#41b883', default: '#ccc'
+};
+
+function langDot(lang) {
+  const color = langColors[lang] || langColors.default;
+  return `<svg viewBox="0 0 10 10" style="width:10px;height:10px;display:inline-block;margin-right:4px"><circle cx="5" cy="5" r="5" fill="${color}"/></svg>`;
+}
+
+// ---- POPULATE USER ----
+async function loadUser() {
+  const u = await ghFetch(`/users/${USERNAME}`);
+
+  // avatar
+  document.getElementById('gh-avatar').src = u.avatar_url;
+
+  // name
+  const name = u.name || USERNAME;
+  document.getElementById('gh-name').textContent = name;
+
+  // bio
+  const bio = u.bio || 'Software Developer | Open Source Enthusiast';
+  document.getElementById('gh-bio').textContent = bio;
+  document.getElementById('hero-bio').textContent = bio;
+  document.getElementById('about-para-1').textContent = bio;
+
+  // stats
+  document.getElementById('stat-repos').textContent = u.public_repos;
+  document.getElementById('stat-followers').textContent = u.followers;
+  document.getElementById('stat-following').textContent = u.following;
+
+  // details
+  document.getElementById('detail-name').textContent = name;
+  document.getElementById('detail-location').textContent = u.location || 'Earth 🌍';
+  document.getElementById('detail-company').textContent = u.company || 'Independent';
+
+  if (u.blog) {
+    document.getElementById('blog-row').style.display = 'flex';
+    const blogEl = document.getElementById('detail-blog');
+    blogEl.innerHTML = `<a href="${u.blog.startsWith('http') ? u.blog : 'https://' + u.blog}" style="color:var(--gold);text-decoration:none;" target="_blank">${u.blog}</a>`;
+  }
+
+  if (u.email) {
+    document.getElementById('email-link').href = `mailto:${u.email}`;
+    document.getElementById('email-display').textContent = u.email;
+  }
+
+  // meta icons
+  const metas = [];
+  if (u.location) metas.push(`<span><svg viewBox="0 0 16 16"><path d="M8 0C5.24 0 3 2.24 3 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>${u.location}</span>`);
+  if (u.company) metas.push(`<span><svg viewBox="0 0 16 16"><path d="M1.5 14.5v-13h5v3h6v10H1.5zm1-1h3v-2h-3v2zm0-3h3v-2h-3v2zm0-3h3V5.5h-3V7.5zm4 6h5v-2h-5v2zm0-3h5v-2h-5v2zm0-3h5V5.5h-5V7.5z"/></svg>${u.company}</span>`);
+  document.getElementById('gh-meta').innerHTML = metas.join('');
+}
+
+// ---- POPULATE PROJECTS ----
+async function loadProjects() {
+  const repos = await ghFetch(`/users/${USERNAME}/repos?sort=updated&per_page=100`);
+  const top = repos
+    .filter(r => !r.fork)
+    .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at)))
+    .slice(0, 9);
+
+  const grid = document.getElementById('projects-grid');
+  grid.innerHTML = '';
+
+  if (top.length === 0) {
+    grid.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">No public repositories found.</p>';
+    return;
+  }
+
+  top.forEach((repo, i) => {
+    const card = document.createElement('div');
+    card.className = 'project-card fade-in';
+    card.style.animationDelay = `${i * 0.07}s`;
+
+    const lang = repo.language || 'Code';
+    const desc = repo.description || 'A software project by Divya Andem.';
+    const updated = new Date(repo.updated_at).toLocaleDateString('en-US', {month:'short', year:'numeric'});
+
+    card.innerHTML = `
+      <div class="project-lang">${langDot(lang)}${lang}</div>
+      <h3 class="project-name">${repo.name}</h3>
+      <p class="project-desc">${desc}</p>
+      <div class="project-footer">
+        <span class="project-stars">⭐ ${repo.stargazers_count} &nbsp;·&nbsp; 🍴 ${repo.forks_count} &nbsp;·&nbsp; ${updated}</span>
+        <a href="${repo.html_url}" target="_blank" class="project-link">View →</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // derive skills from languages
+  deriveSkills(repos);
+}
+
+// ---- SKILLS FROM REPOS ----
+function deriveSkills(repos) {
+  const langCount = {};
+  repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language] || 0) + 1; });
+  const langs = Object.keys(langCount).sort((a, b) => langCount[b] - langCount[a]);
+
+  // topic collection
+  const topicSet = new Set();
+  repos.forEach(r => (r.topics || []).forEach(t => topicSet.add(t)));
+
+  const categories = [
+    {
+      title: 'Languages',
+      tags: langs.length > 0 ? langs : ['JavaScript', 'Python', 'HTML', 'CSS']
+    },
+    {
+      title: 'Frameworks & Libraries',
+      tags: inferFrameworks(topicSet, langs)
+    },
+    {
+      title: 'Tools & Platforms',
+      tags: ['Git', 'GitHub', 'VS Code', 'Linux', 'npm', 'pip']
+    },
+    {
+      title: 'Practices',
+      tags: ['Open Source', 'Agile', 'RESTful APIs', 'Code Review', 'Version Control']
+    }
+  ];
+
+  const grid = document.getElementById('skills-grid');
+  grid.innerHTML = '';
+  categories.forEach(cat => {
+    const div = document.createElement('div');
+    div.className = 'skill-category fade-in';
+    div.innerHTML = `
+      <div class="skill-cat-title">${cat.title}</div>
+      <div class="skill-tags">${cat.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+function inferFrameworks(topics, langs) {
+  const map = {
+    JavaScript: ['React', 'Node.js', 'Express'],
+    TypeScript: ['TypeScript', 'Angular', 'Next.js'],
+    Python: ['Flask', 'Django', 'NumPy', 'Pandas'],
+    Java: ['Spring Boot', 'Maven'],
+    PHP: ['Laravel'],
+    Ruby: ['Ruby on Rails'],
+    Dart: ['Flutter'],
+    Go: ['Gin'],
+  };
+  const result = new Set();
+  langs.forEach(l => (map[l] || []).forEach(f => result.add(f)));
+  topics.forEach(t => result.add(t.charAt(0).toUpperCase() + t.slice(1)));
+  return [...result].slice(0, 8) || ['React', 'Node.js', 'REST APIs'];
+}
+
+// ---- INIT ----
+(async () => {
+  try {
+    await Promise.all([loadUser(), loadProjects()]);
+  } catch (err) {
+    console.error('Error loading GitHub data:', err);
+    // Graceful fallback already in HTML
+    document.getElementById('gh-bio').textContent = 'Developer & Engineer. See GitHub profile for full details.';
+  }
+})();
+</script>
+</body>
+</html>
