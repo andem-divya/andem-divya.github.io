@@ -195,11 +195,11 @@
     .edu-detail { font-size: .79rem; color: var(--muted); line-height: 1.65; }
 
     /* ── CONTACT ── */
-    .contact-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
+    .contact-layout { display: flex; flex-direction: column; align-items: center; }
     .contact-hl { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: .88rem; }
     .contact-hl em { font-style: italic; color: var(--blue-light); }
     .contact-sub { font-size: .87rem; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 1.8rem; }
-    .c-items { display: flex; flex-direction: column; gap: .62rem; }
+    .c-items { display: flex; flex-direction: column; gap: .62rem; width: 100%; max-width: 480px; }
     .c-item { display: flex; align-items: center; gap: .95rem; padding: .85rem 1.1rem; background: rgba(255,255,255,.03); border: 1px solid rgba(91,127,232,.15); border-radius: 10px; text-decoration: none; transition: background .2s, border-color .2s; }
     .c-item:hover { background: rgba(91,127,232,.08); border-color: rgba(91,127,232,.38); }
     .ci-ic { width: 37px; height: 37px; border-radius: 9px; background: rgba(91,127,232,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
