@@ -4,28 +4,24 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex, nofollow"/>
-  <title>Divya Andem — Software & ML Engineer</title>
+  <title>Divya Andem — Software & Data Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    /* ── DESIGN TOKENS ──────────────────────────────────────────
-       Navy + Slate Blue — clean, modern, tech-forward
-       Industry reference: Linear, Vercel, Stripe career pages
-    ────────────────────────────────────────────────────────── */
     :root {
-      --navy:         #0d1b2a;    /* hero / dark sections        */
-      --navy-mid:     #162535;    /* hero gradient mid           */
-      --navy-card:    #1c2f42;    /* dark card surface           */
-      --blue:         #5b7fe8;    /* primary accent              */
-      --blue-light:   #7f9eff;    /* hover / lighter accent      */
+      --navy:         #0d1b2a;
+      --navy-mid:     #162535;
+      --navy-card:    #1c2f42;
+      --blue:         #5b7fe8;
+      --blue-light:   #7f9eff;
       --blue-dim:     rgba(91,127,232,0.12);
       --blue-bdr:     rgba(91,127,232,0.22);
-      --bg:           #f7f8fa;    /* page background             */
-      --surface:      #ffffff;    /* cards                       */
-      --surface-alt:  #f0f2f5;    /* subtle alternating section  */
-      --text:         #0f172a;    /* headings                    */
-      --text-sub:     #334155;    /* body copy                   */
-      --muted:        #64748b;    /* labels, meta                */
-      --rule:         #e2e8f0;    /* dividers                    */
+      --bg:           #f7f8fa;
+      --surface:      #ffffff;
+      --surface-alt:  #f0f2f5;
+      --text:         #0f172a;
+      --text-sub:     #334155;
+      --muted:        #64748b;
+      --rule:         #e2e8f0;
     }
 
     *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +30,7 @@
     a { color: var(--blue); text-decoration: none; }
     a:hover { color: var(--blue-light); }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(13,27,42,.97);
@@ -51,7 +47,7 @@
     .nav-cta { background: var(--blue) !important; color: #fff !important; padding: .38rem 1.1rem; border-radius: 5px; font-weight: 600 !important; }
     .nav-cta:hover { background: var(--blue-light) !important; color: var(--navy) !important; }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       background: linear-gradient(140deg, var(--navy) 0%, var(--navy-mid) 60%, #0e2440 100%);
@@ -125,7 +121,7 @@
     .card-link:hover { background: rgba(91,127,232,.1); color: var(--blue-light); }
     .cli { width: 27px; height: 27px; border-radius: 7px; background: rgba(91,127,232,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-    /* ── SECTION BASE ── */
+    /* SECTION BASE */
     .section { padding: 88px 5%; }
     .sec-inner { max-width: 1100px; margin: 0 auto; }
     .sec-header { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 3rem; }
@@ -133,18 +129,16 @@
     .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem,3.5vw,2.3rem); color: var(--text); line-height: 1.15; }
     .sec-rule { flex: 1; height: 1px; background: linear-gradient(to right, var(--rule), transparent); }
 
-    /* dark section */
     .sec-dark { background: var(--navy); }
     .sec-dark .sec-title { color: #fff; }
     .sec-dark .sec-num { color: var(--blue-light); }
     .sec-dark .sec-rule { background: linear-gradient(to right, rgba(91,127,232,.3), transparent); }
 
-    /* light sections — alternating clean grays */
     .sec-bg-a { background: var(--bg); }
     .sec-bg-b { background: var(--surface-alt); }
     .sec-bg-white { background: var(--surface); }
 
-    /* ── SKILLS ── */
+    /* SKILLS */
     .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
     .skill-card { background: var(--surface); border-radius: 14px; padding: 1.6rem; border: 1px solid var(--rule); box-shadow: 0 2px 12px rgba(0,0,0,.04); transition: box-shadow .2s, transform .2s; }
     .skill-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.08); transform: translateY(-2px); }
@@ -153,7 +147,7 @@
     .skill-tags { display: flex; flex-wrap: wrap; gap: .38rem; }
     .skill-tag { background: var(--blue-dim); color: var(--text-sub); padding: .22rem .65rem; border-radius: 20px; font-size: .77rem; font-weight: 500; border: 1px solid var(--blue-bdr); }
 
-    /* ── EXPERIENCE ── */
+    /* EXPERIENCE */
     .exp-list { display: flex; flex-direction: column; }
     .exp-row { display: grid; grid-template-columns: 195px 1fr; gap: 2.5rem; padding: 2.2rem 0; border-bottom: 1px solid var(--rule); }
     .exp-row:first-child { padding-top: 0; }
@@ -166,7 +160,7 @@
     .exp-bullets li { display: flex; gap: .7rem; font-size: .85rem; color: var(--text-sub); line-height: 1.72; }
     .exp-bullets li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: .56rem; }
 
-    /* ── PROJECTS ── */
+    /* PROJECTS */
     .proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; }
     .proj-card { background: var(--surface); border-radius: 14px; padding: 1.8rem; border: 1px solid var(--rule); box-shadow: 0 2px 12px rgba(0,0,0,.04); transition: transform .25s, box-shadow .25s; display: flex; flex-direction: column; position: relative; overflow: hidden; }
     .proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--blue), var(--blue-light)); }
@@ -182,10 +176,11 @@
     .proj-foot { display: flex; justify-content: space-between; align-items: center; padding-top: .88rem; border-top: 1px solid var(--rule); margin-top: auto; }
     .psk-row { display: flex; gap: .26rem; flex-wrap: wrap; }
     .psk { background: var(--surface-alt); border: 1px solid var(--rule); color: var(--muted); font-size: .66rem; padding: .12rem .46rem; border-radius: 4px; }
+    .proj-links { display: flex; gap: 1rem; }
     .proj-link { font-size: .76rem; font-weight: 600; color: var(--blue); text-decoration: none; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; }
     .proj-link:hover { color: var(--text); }
 
-    /* ── EDUCATION ── */
+    /* EDUCATION */
     .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .edu-card { background: var(--surface); border-radius: 14px; padding: 1.8rem; border: 1px solid var(--rule); box-shadow: 0 2px 12px rgba(0,0,0,.04); position: relative; overflow: hidden; }
     .edu-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--blue), var(--blue-light)); }
@@ -194,7 +189,7 @@
     .edu-school { font-size: .83rem; color: var(--blue); font-weight: 600; margin-bottom: .7rem; }
     .edu-detail { font-size: .79rem; color: var(--muted); line-height: 1.65; }
 
-    /* ── CONTACT ── */
+    /* CONTACT */
     .contact-layout { display: flex; flex-direction: column; align-items: center; }
     .contact-hl { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: .88rem; }
     .contact-hl em { font-style: italic; color: var(--blue-light); }
@@ -205,28 +200,22 @@
     .ci-ic { width: 37px; height: 37px; border-radius: 9px; background: rgba(91,127,232,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .ci-m { font-size: .84rem; color: rgba(255,255,255,.78); }
     .ci-s { font-size: .72rem; color: var(--blue-light); margin-top: .04rem; }
-    .cf { display: flex; flex-direction: column; gap: .75rem; }
-    .cf-r { display: flex; flex-direction: column; gap: .28rem; }
-    .cf-r label { font-size: .67rem; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .1em; font-weight: 500; }
-    .cf-r input, .cf-r textarea { background: rgba(255,255,255,.05); border: 1px solid rgba(91,127,232,.2); border-radius: 8px; padding: .7rem .95rem; color: #fff; font-family: 'DM Sans', sans-serif; font-size: .87rem; outline: none; transition: border-color .2s; resize: vertical; }
-    .cf-r input:focus, .cf-r textarea:focus { border-color: var(--blue); }
-    .cf-r input::placeholder, .cf-r textarea::placeholder { color: rgba(255,255,255,.2); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer { background: #070f18; border-top: 1px solid rgba(91,127,232,.1); text-align: center; padding: 1.8rem; color: rgba(255,255,255,.22); font-size: .76rem; }
     footer span { color: var(--blue-light); }
 
-    /* ── REVEAL ── */
+    /* REVEAL */
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.on { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
       .hero-card { max-width: 320px; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .exp-row { grid-template-columns: 1fr; gap: .4rem; }
-      .proj-grid, .edu-grid, .contact-layout { grid-template-columns: 1fr; }
+      .proj-grid, .edu-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 580px) {
       nav { padding: 0 4%; }
@@ -256,20 +245,21 @@
   <div class="hero-grid">
     <div class="reveal">
       <div class="avail-badge"><div class="avail-dot"></div>Available · April 2026</div>
-      <p class="hero-eyebrow">Software Engineer &amp; ML Engineer</p>
+      <p class="hero-eyebrow">Software Engineer | Data & AI/ML </p>
       <h1 class="hero-name">Divya<br/><em>Andem</em></h1>
       <p class="hero-tagline">
         <strong>6 years</strong> building backend systems, data pipelines &amp; cloud-native applications.
-        Completing a <strong>Master's in Applied Data Science</strong> at the University of Michigan,
-        specializing in machine learning, deep learning (PyTorch), and generative AI.
+        MS in Applied Data Science <strong>(AI concentration)</strong> from the
+        <strong>University of Michigan</strong>, graduating <strong>April 2026</strong>.
       </p>
       <div class="hero-pills">
-        <span class="pill">Python · PyTorch</span>
+        <span class="pill">Python · PySpark</span>
+        <span class="pill">PyTorch · Scikit-Learn</span>
         <span class="pill">LLMs &amp; RAG</span>
         <span class="pill">AWS Serverless</span>
-        <span class="pill">NLP · PySpark</span>
         <span class="pill">Data Pipelines</span>
         <span class="pill">Microservices</span>
+        <span class="pill">ChromaDB · LangChain</span>
       </div>
       <div class="hero-actions">
         <a href="#projects" class="btn-primary">See My Work</a>
@@ -316,8 +306,9 @@
           <span class="skill-tag">XGBoost</span><span class="skill-tag">Random Forest</span>
           <span class="skill-tag">NLP</span><span class="skill-tag">LLMs</span>
           <span class="skill-tag">RAG</span><span class="skill-tag">LangChain</span>
-          <span class="skill-tag">VectorDB</span><span class="skill-tag">Feature Engineering</span>
-          <span class="skill-tag">Clustering</span><span class="skill-tag">GridSearchCV</span>
+          <span class="skill-tag">ChromaDB</span><span class="skill-tag">VectorDB</span>
+          <span class="skill-tag">Feature Engineering</span><span class="skill-tag">Clustering</span>
+          <span class="skill-tag">AWS Bedrock</span>
         </div>
       </div>
       <div class="skill-card reveal" style="transition-delay:.1s">
@@ -330,7 +321,7 @@
           <span class="skill-tag">FastAPI</span><span class="skill-tag">SQLAlchemy</span>
           <span class="skill-tag">REST APIs</span><span class="skill-tag">BeautifulSoup</span>
           <span class="skill-tag">Streamlit</span><span class="skill-tag">Matplotlib</span>
-          <span class="skill-tag">Seaborn</span>
+          <span class="skill-tag">Seaborn</span><span class="skill-tag">D3.js</span>
         </div>
       </div>
       <div class="skill-card reveal" style="transition-delay:.2s">
@@ -339,7 +330,7 @@
         <div class="skill-tags">
           <span class="skill-tag">AWS Lambda</span><span class="skill-tag">S3</span>
           <span class="skill-tag">SQS</span><span class="skill-tag">API Gateway</span>
-          <span class="skill-tag">RDS</span><span class="skill-tag">CloudWatch</span>
+          <span class="skill-tag">RDS</span><span class="skill-tag">Bedrock</span>
           <span class="skill-tag">Secrets Manager</span><span class="skill-tag">Docker</span>
           <span class="skill-tag">CI/CD</span><span class="skill-tag">Serverless</span>
           <span class="skill-tag">Microservices</span><span class="skill-tag">Git</span>
@@ -359,21 +350,25 @@
       <div class="sec-rule"></div>
     </div>
     <div class="exp-list">
+
       <div class="exp-row reveal">
         <div>
           <div class="exp-period">Feb 2021 – Aug 2023</div>
-          <span class="exp-badge">Backend · Cloud · ML</span>
+          <span class="exp-badge">Backend · Cloud · Data</span>
         </div>
         <div>
-          <div class="exp-role">Software Product &amp; Platform Eng Specialist</div>
+          <div class="exp-role">Software Engineer II (Platform)</div>
           <div class="exp-co">Accenture · Hyderabad, India</div>
           <ul class="exp-bullets">
-            <li>Automated data cleaning and transformation pipelines using Python, delivering quality-assured datasets to AWS S3 for downstream ML pipelines and analytics, saving 20+ hours/month.</li>
-            <li>Developed serverless REST APIs with Flask on AWS Lambda and API Gateway, exposing golden records for insurance workflows including products, policies, and customer data.</li>
-            <li>Implemented event-driven Lambda functions triggered via Amazon SQS to process insurance domain events and deliver results to downstream transactional systems.</li>
+            <li>Developed serverless REST APIs using Python/Flask on AWS Lambda and API Gateway, containerized with Docker and deployed via GitLab CI/CD pipelines, exposing golden records for insurance workflows.</li>
+            <li>Designed event-driven microservices using AWS Lambda and Amazon SQS to process insurance domain events, supporting real-time data updates and retrieval for transactional downstream systems.</li>
+            <li>Built end-to-end ETL pipelines using Python, Pandas and MySQL delivering structured, production-ready datasets to S3 for downstream ML systems, saving 20+ hours/month of manual effort.</li>
+            <li>Built internal SPAs using D3.js and Bootstrap for product discovery, including a sunburst hierarchy visualization and a searchable product catalog used by business stakeholders.</li>
+            <li>Wrote unit and integration tests using Pytest across APIs and data pipelines to ensure code quality and reliability.</li>
           </ul>
         </div>
       </div>
+
       <div class="exp-row reveal">
         <div>
           <div class="exp-period">Sep 2019 – Feb 2021</div>
@@ -383,25 +378,28 @@
           <div class="exp-role">Software Engineer II</div>
           <div class="exp-co">MatrixIntelligence India LLP · Hyderabad, India</div>
           <ul class="exp-bullets">
-            <li>Resolved a performance bottleneck and converted a manual Excel process to an automated Python pipeline processing 4 million+ rows, reducing processing time from half a day to under 10 minutes.</li>
-            <li>Built an end-to-end price prediction POC by automating data collection (BeautifulSoup) and training ML models, enabling data-driven pricing decisions.</li>
-            <li>Developed Python workflows to automate business KPI metrics and delivered results to Power BI dashboards.</li>
+            <li>Resolved a critical performance bottleneck by converting a manual Excel process into an automated Python pipeline processing 4M+ rows, reducing processing time from half a day to under 10 minutes.</li>
+            <li>Developed Python/Pandas workflows to automate KPI calculations in the supply chain domain, ingesting CSV data, transforming and loading into SQL Server, and delivering outputs to Power BI dashboards.</li>
+            <li>Built an end-to-end price prediction POC by automating data collection using BeautifulSoup and training ML models, enabling data-driven pricing decisions.</li>
           </ul>
         </div>
       </div>
+
       <div class="exp-row reveal">
         <div>
           <div class="exp-period">Jun 2017 – Sep 2019</div>
-          <span class="exp-badge">IoT · Backend</span>
+          <span class="exp-badge">IoT · Backend · Automation</span>
         </div>
         <div>
           <div class="exp-role">Software Engineer I</div>
           <div class="exp-co">Smartron India Pvt Ltd · Hyderabad, India</div>
           <ul class="exp-bullets">
-            <li>Developed a Python-based Smart Home Assistant module using Flask and WebSockets for real-time communication between IoT devices and cloud services.</li>
+            <li>Developed a Python-based Smart Home Assistant module using Flask and WebSockets, enabling real-time communication between IoT devices and cloud services for seamless device control.</li>
+            <li>Built an internal test automation framework in Python enabling QA teams to programmatically simulate voice commands and mobile app interactions, reducing manual test execution time by 80% per release cycle.</li>
           </ul>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -415,23 +413,28 @@
       <div class="sec-rule"></div>
     </div>
     <div class="proj-grid">
+
       <div class="proj-card reveal">
         <div class="proj-top">
-          <div class="ptags"><span class="ptag">ML</span><span class="ptag">Streamlit</span><span class="ptag">LLM</span></div>
+          <div class="ptags"><span class="ptag">RAG</span><span class="ptag">ML</span><span class="ptag">Streamlit</span><span class="ptag">AWS</span></div>
           <div class="proj-date">Feb 2026 – Present</div>
         </div>
-        <div class="proj-name">MoveSmart — US City Recommendation System</div>
+        <div class="proj-name">MoveSmart — U.S. City Recommendation Engine</div>
         <ul class="proj-bullets">
-          <li>Built a city recommendation pipeline integrating datasets across affordability, safety, employment, climate, and lifestyle for personalized recommendations.</li>
-          <li>Implemented similarity-based and clustering models to segment cities and surface "cities like X" recommendations.</li>
-          <li>Integrated LLM-powered content enrichment to generate natural language city summaries per user preference.</li>
-          <li>Deployed an interactive Streamlit app where users set preferences and receive ranked, visual city recommendations.</li>
+          <li>End-to-end data pipeline ingesting 5 government datasets (Census, FBI, CDC, NOAA, EPA) with feature engineering across 900+ U.S. metro areas scored on 6 life themes — Affordability, Safety, Job Growth, Diversity, Urban Form, Outdoor Lifestyle.</li>
+          <li>Applied PCA + KMeans clustering and content-based filtering to match users to cities aligned with their preferences.</li>
+          <li>Built a RAG pipeline using ChromaDB embeddings and semantic search, generating personalized AWS Bedrock LLM summaries explaining each city match.</li>
+          <li>Deployed interactive Streamlit app with preference sliders, ranked recommendations, cluster visualizations, and AI-generated city insights.</li>
         </ul>
         <div class="proj-foot">
-          <div class="psk-row"><span class="psk">Python</span><span class="psk">Streamlit</span><span class="psk">Clustering</span><span class="psk">LLMs</span></div>
-          <a href="https://github.com/andem-divya/movesmart" target="_blank" class="proj-link">GitHub →</a>
+          <div class="psk-row"><span class="psk">Python</span><span class="psk">ChromaDB</span><span class="psk">RAG</span><span class="psk">AWS Bedrock</span><span class="psk">LangChain</span><span class="psk">Streamlit</span></div>
+          <div class="proj-links">
+            <a href="https://capstone-movesmart.netlify.app/" target="_blank" class="proj-link">Live →</a>
+            <a href="https://github.com/andem-divya/movesmart" target="_blank" class="proj-link">GitHub →</a>
+          </div>
         </div>
       </div>
+
       <div class="proj-card reveal" style="transition-delay:.1s">
         <div class="proj-top">
           <div class="ptags"><span class="ptag">ML</span><span class="ptag">Geospatial</span><span class="ptag">Unsupervised</span></div>
@@ -439,32 +442,35 @@
         </div>
         <div class="proj-name">Airbnb Success — Prediction &amp; Segmentation</div>
         <ul class="proj-bullets">
-          <li>Predicted review activity by integrating crime, population, and walkability datasets via spatial joins to build location-aware features.</li>
-          <li>Ran supervised pipeline: Linear Models, Regularization, KNN, and tree-based models with cross-validation and hyperparameter tuning.</li>
-          <li>Performed unsupervised segmentation to cluster listings by neighborhood and property characteristics.</li>
-          <li>Managed a 1.6 GB full dataset externally with sample data in-repo for reproducibility.</li>
+          <li>Predicted Airbnb listing review activity across 52K California listings by integrating FBI crime, EPA walkability, and Census data via spatial joins using GeoPandas.</li>
+          <li>Compared Linear Regression, KNN, Random Forest and XGBoost — XGBoost achieved best performance (R² 0.45, MAE 6.77) after hyperparameter tuning with GridSearchCV.</li>
+          <li>Conducted ablation analysis showing minimum_nights alone accounts for 24% of R² drop — and sensitivity analysis on max_depth and min_child_weight to optimize bias-variance tradeoff.</li>
+          <li>Unsupervised segmentation via PCA + KMeans revealed 4 distinct listing archetypes differentiated by property scale, stay strategy, and neighborhood context.</li>
         </ul>
         <div class="proj-foot">
-          <div class="psk-row"><span class="psk">Python</span><span class="psk">XGBoost</span><span class="psk">GeoPandas</span><span class="psk">Scikit-Learn</span></div>
+          <div class="psk-row"><span class="psk">Python</span><span class="psk">XGBoost</span><span class="psk">GeoPandas</span><span class="psk">Scikit-Learn</span><span class="psk">PCA</span></div>
           <a href="https://github.com/andem-divya/Airbnb-Success" target="_blank" class="proj-link">GitHub →</a>
         </div>
       </div>
+
       <div class="proj-card reveal">
         <div class="proj-top">
-          <div class="ptags"><span class="ptag">EDA</span><span class="ptag">Data Pipeline</span><span class="ptag">Viz</span></div>
+          <div class="ptags"><span class="ptag">EDA</span><span class="ptag">Data Pipeline</span><span class="ptag">Economics</span></div>
           <div class="proj-date">2025</div>
         </div>
-        <div class="proj-name">US Automotive Trade Analysis</div>
+        <div class="proj-name">U.S. Automotive Trade Analysis</div>
         <ul class="proj-bullets">
-          <li>Analyzed U.S. automotive trade trends — exports, imports, tariffs — by integrating primary trade data with macroeconomic indicators (GDP, MFN tariffs).</li>
-          <li>Built a multi-step cleaning and merge pipeline producing a unified analysis-ready dataset.</li>
-          <li>Created reusable visualization utilities covering time series, category comparisons, and trading partner analysis.</li>
+          <li>Analyzed U.S. automotive trade trends — exports, imports, tariffs — integrating ITA trade data with World Bank GDP and WITS MFN tariff datasets across 30+ countries from 2008–2022.</li>
+          <li>Applied Spearman correlation and OLS regression on log-transformed data to quantify GDP's relationship with automotive export volumes across parts, vehicles, and trucks.</li>
+          <li>Identified inverse relationship between 2018 tariff spike and import volumes, mirroring real-world trade policy impacts including China trade tensions and COVID-19 effects.</li>
+          <li>Built a multi-step cleaning and merge pipeline with linear interpolation for missing time series values, producing a unified analysis-ready dataset.</li>
         </ul>
         <div class="proj-foot">
-          <div class="psk-row"><span class="psk">Python</span><span class="psk">Pandas</span><span class="psk">Jupyter</span><span class="psk">Matplotlib</span></div>
+          <div class="psk-row"><span class="psk">Python</span><span class="psk">Pandas</span><span class="psk">Matplotlib</span><span class="psk">Seaborn</span><span class="psk">OLS</span><span class="psk">Spearman</span></div>
           <a href="https://github.com/andem-divya/US-Automotive-Trade-Analysis" target="_blank" class="proj-link">GitHub →</a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
